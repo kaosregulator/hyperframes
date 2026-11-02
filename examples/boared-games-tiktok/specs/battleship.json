@@ -1,0 +1,312 @@
+{
+  "id": "battleship",
+  "gsap": "../work/gsap.min.js",
+  "reel": "../work/reel.mp4",
+  "music": {
+    "src": "$BOARED/public/room/brahe-punch-deck.mp3",
+    "start": 60,
+    "volume": 0.9,
+    "fadeIn": 0.3,
+    "credit": "music: \"Brahe\" by Punch Deck · CC BY 4.0"
+  },
+  "accent": "#19e3d2",
+  "hud": "SP  NAVAL BATTLE",
+  "tintAt": 49.5,
+  "shots": [
+    {
+      "kind": "still",
+      "src": "../stills/battleship/04.jpg",
+      "d": 4.5,
+      "x0": 900,
+      "x1": 500,
+      "s0": 1.15,
+      "s1": 1.3,
+      "tr": "none"
+    },
+    {
+      "kind": "reel",
+      "ms": 29.3,
+      "d": 3.0,
+      "x0": 950,
+      "x1": 450,
+      "s0": 1.25,
+      "s1": 1.15,
+      "tr": "whip"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/battleship/00.jpg",
+      "d": 3.0,
+      "x0": 0,
+      "x1": 0,
+      "s0": 1.0,
+      "s1": 1.2,
+      "tr": "zoom",
+      "ease": "power2.in"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/battleship/01.jpg",
+      "d": 4.0,
+      "x0": 500,
+      "x1": -100,
+      "s0": 1.1,
+      "s1": 1.2,
+      "tr": "whip"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/battleship/03.jpg",
+      "d": 3.5,
+      "x0": 300,
+      "x1": -300,
+      "s0": 1.05,
+      "s1": 1.15,
+      "tr": "flash"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/battleship/06.jpg",
+      "d": 3.5,
+      "x0": -500,
+      "x1": -650,
+      "y0": -400,
+      "y1": -480,
+      "s0": 1.3,
+      "s1": 1.45,
+      "tr": "zoom"
+    },
+    {
+      "kind": "still",
+      "layout": "card",
+      "src": "../stills/battleship/02-ui.jpg",
+      "bg": "../stills/battleship/bg/02-ui.jpg",
+      "cardTop": 640,
+      "d": 2.5,
+      "s0": 1.0,
+      "s1": 1.08,
+      "tr": "flash"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/battleship/07.jpg",
+      "d": 3.5,
+      "x0": 400,
+      "x1": -200,
+      "s0": 1.1,
+      "s1": 1.25,
+      "tr": "whip"
+    },
+    {
+      "kind": "still",
+      "layout": "card",
+      "src": "../stills/battleship/11-ui.jpg",
+      "bg": "../stills/battleship/bg/11-ui.jpg",
+      "cardTop": 640,
+      "d": 2.5,
+      "s0": 1.0,
+      "s1": 1.08,
+      "tr": "punch"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/battleship/09.jpg",
+      "d": 3.0,
+      "x0": -300,
+      "x1": -600,
+      "s0": 1.1,
+      "s1": 1.2,
+      "tr": "vwhip"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/battleship/10.jpg",
+      "d": 4.0,
+      "x0": -700,
+      "x1": -500,
+      "s0": 1.5,
+      "s1": 1.15,
+      "tr": "zoom",
+      "ease": "power2.out"
+    },
+    {
+      "kind": "still",
+      "layout": "card",
+      "src": "../stills/battleship/08-ui.jpg",
+      "bg": "../stills/battleship/bg/08-ui.jpg",
+      "cardTop": 640,
+      "d": 3.0,
+      "s0": 1.0,
+      "s1": 1.08,
+      "tr": "dip"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/battleship/12.jpg",
+      "d": 5.0,
+      "x0": 700,
+      "x1": -500,
+      "s0": 1.05,
+      "s1": 1.15,
+      "tr": "iris",
+      "ease": "power1.inOut"
+    },
+    {
+      "kind": "reel",
+      "ms": 1.5,
+      "d": 5.0,
+      "x0": 650,
+      "x1": -250,
+      "s0": 1.0,
+      "s1": 1.1,
+      "tr": "dip"
+    },
+    { "kind": "reel", "ms": 0.4, "d": 8.0, "x0": 0, "x1": 0, "s0": 1.15, "s1": 1.05, "tr": "zoom" }
+  ],
+  "texts": [
+    {
+      "kind": "big",
+      "at": 0,
+      "d": 4.4,
+      "y": 330,
+      "text": ["YOU SANK", "MY *BATTLE-*", "*SHIP!*"],
+      "enter": "hook",
+      "size": 132
+    },
+    {
+      "kind": "sub",
+      "at": 4.8,
+      "d": 2.6,
+      "y": 1060,
+      "text": ["the box from", "the top shelf."],
+      "enter": "blur",
+      "size": 52
+    },
+    {
+      "kind": "mid",
+      "at": 7.8,
+      "d": 2.6,
+      "y": 330,
+      "text": ["AN *EMPTY* OCEAN."],
+      "enter": "rise",
+      "size": 92
+    },
+    {
+      "kind": "sticker",
+      "at": 10.8,
+      "d": 3.6,
+      "y": 330,
+      "text": "PLACE YOUR FLEET",
+      "color": "teal",
+      "rot": -3
+    },
+    {
+      "kind": "mid",
+      "at": 14.7,
+      "d": 3.2,
+      "y": 330,
+      "text": ["PIRATE SHIPS", "ON THE *CARD TABLE.*"],
+      "enter": "drop",
+      "size": 86
+    },
+    {
+      "kind": "slot",
+      "at": 18.1,
+      "d": 3.3,
+      "y": 330,
+      "label": "CALL YOUR SHOT",
+      "items": ["A-1", "J-10", "C-7", "F-3", "B-4"],
+      "spin": 1.6
+    },
+    {
+      "kind": "big",
+      "at": 21.6,
+      "d": 2.3,
+      "y": 330,
+      "text": ["*HIT!*"],
+      "enter": "slam",
+      "size": 230
+    },
+    {
+      "kind": "mid",
+      "at": 24.2,
+      "d": 3.2,
+      "y": 330,
+      "text": ["FIRE", "*AGAIN.*"],
+      "enter": "pop",
+      "size": 120
+    },
+    {
+      "kind": "sticker",
+      "at": 27.6,
+      "d": 2.3,
+      "y": 380,
+      "text": "HIT! HIT! HIT!",
+      "color": "pink",
+      "rot": 4
+    },
+    {
+      "kind": "mid",
+      "at": 30.2,
+      "d": 2.7,
+      "y": 1000,
+      "text": ["*SPLASH.*", "THEY MISSED."],
+      "enter": "rise",
+      "size": 96
+    },
+    {
+      "kind": "big",
+      "at": 33.3,
+      "d": 3.6,
+      "y": 300,
+      "text": ["YOU SANK", "THEIR", "*1-DECKER!*"],
+      "enter": "slam",
+      "size": 126
+    },
+    {
+      "kind": "big",
+      "at": 37.2,
+      "d": 2.7,
+      "y": 300,
+      "text": ["WHO ELSE", "*PEEKED?*"],
+      "enter": "pop",
+      "size": 130
+    },
+    {
+      "kind": "sub",
+      "at": 38.0,
+      "d": 1.9,
+      "y": 1160,
+      "text": ["be honest ↓"],
+      "enter": "blur",
+      "size": 46
+    },
+    {
+      "kind": "mid",
+      "at": 40.4,
+      "d": 4.4,
+      "y": 330,
+      "text": ["A WHOLE *OCEAN*", "ON GRANDMA'S", "CARD TABLE."],
+      "enter": "rise",
+      "size": 84
+    },
+    {
+      "kind": "mid",
+      "at": 45.3,
+      "d": 4.5,
+      "y": 330,
+      "text": ["IN THE ROOM", "YOU *GREW UP* IN."],
+      "enter": "blur",
+      "size": 92
+    },
+    {
+      "kind": "endcard",
+      "at": 50.4,
+      "d": 7.6,
+      "y": 680,
+      "kicker": "BATTLESHIP AND MORE IN",
+      "sub": "the 90s room",
+      "cta": "PLAY IT IN YOUR BROWSER"
+    }
+  ]
+}

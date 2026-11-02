@@ -102,6 +102,8 @@ examples/*
 !examples/k8s-jobs/**
 !examples/gcp-cloud-run
 !examples/gcp-cloud-run/**
+!examples/boared-games-tiktok
+!examples/boared-games-tiktok/**
 !examples/docs-reference-project
 !examples/docs-reference-project/**
 # …but never the local smoke run's build/render artifacts.

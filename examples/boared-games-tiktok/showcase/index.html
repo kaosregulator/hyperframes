@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      :root {
+        --ground: #07020f;
+        --ink: #ffffff;
+        --yellow: #ffe14d;
+        --pink: #ff3ea5;
+        --teal: #19e3d2;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--ground);
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: var(--ground);
+        font-family: "Archivo Black", sans-serif;
+      }
+      .cam {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: visible;
+      }
+      .cam video {
+        position: absolute;
+        top: 0;
+        left: -1166px;
+        width: 3413px;
+        height: 1920px;
+        object-fit: cover;
+      }
+      .layer {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+      .center {
+        position: absolute;
+        left: 60px;
+        right: 60px;
+        text-align: center;
+        color: var(--ink);
+      }
+      .big {
+        font-size: 150px;
+        line-height: 0.92;
+        letter-spacing: -0.03em;
+        text-shadow:
+          -5px 0 0 rgba(255, 62, 165, 0.85),
+          5px 0 0 rgba(25, 227, 210, 0.85),
+          0 10px 40px rgba(0, 0, 0, 0.75);
+      }
+      .mid {
+        font-size: 104px;
+        line-height: 0.95;
+        letter-spacing: -0.02em;
+        text-shadow:
+          -4px 0 0 rgba(255, 62, 165, 0.8),
+          4px 0 0 rgba(25, 227, 210, 0.8),
+          0 8px 30px rgba(0, 0, 0, 0.8);
+      }
+      .sub {
+        font-family: "Space Mono", monospace;
+        font-size: 44px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-shadow: 0 4px 18px rgba(0, 0, 0, 0.95);
+      }
+      .w {
+        display: inline-block;
+      }
+      .sticker {
+        display: inline-block;
+        background: var(--yellow);
+        color: #120720;
+        padding: 18px 34px 10px;
+        border-radius: 14px;
+        font-size: 96px;
+        line-height: 1;
+        box-shadow:
+          10px 10px 0 #120720,
+          0 20px 50px rgba(0, 0, 0, 0.6);
+      }
+      .sticker.pink {
+        background: var(--pink);
+        color: #fff;
+      }
+      .sticker.teal {
+        background: var(--teal);
+      }
+      .hud {
+        position: absolute;
+        font-family: "Space Mono", monospace;
+        font-weight: 700;
+        color: #fff;
+        font-size: 40px;
+        text-shadow: 0 0 12px rgba(255, 255, 255, 0.6), 0 3px 8px rgba(0, 0, 0, 0.9);
+      }
+      #scan {
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.22) 0px,
+          rgba(0, 0, 0, 0.22) 2px,
+          rgba(0, 0, 0, 0) 2px,
+          rgba(0, 0, 0, 0) 5px
+        );
+        opacity: 0.55;
+      }
+      #vig {
+        background: radial-gradient(
+          ellipse at 50% 45%,
+          rgba(0, 0, 0, 0) 45%,
+          rgba(0, 0, 0, 0.55) 100%
+        );
+      }
+      #flash {
+        background: #fff;
+        opacity: 0;
+      }
+      #dip {
+        background: #000;
+        opacity: 0;
+      }
+      .polaroid {
+        position: absolute;
+        width: 380px;
+        background: #fffdf4;
+        padding: 18px 18px 64px;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+      }
+      .polaroid img {
+        display: block;
+        width: 344px;
+        height: 300px;
+        object-fit: cover;
+      }
+      .polaroid span {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 12px;
+        text-align: center;
+        font-family: "Space Mono", monospace;
+        font-weight: 700;
+        font-size: 30px;
+        color: #222;
+      }
+      .slot {
+        position: relative;
+        height: 120px;
+        overflow: hidden;
+      }
+      .slot-reel {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+      }
+      .slot-reel div {
+        height: 120px;
+        line-height: 120px;
+        font-size: 104px;
+        color: var(--yellow);
+        text-shadow:
+          -4px 0 0 rgba(255, 62, 165, 0.8),
+          4px 0 0 rgba(25, 227, 210, 0.8),
+          0 8px 30px rgba(0, 0, 0, 0.8);
+      }
+      .streak {
+        position: absolute;
+        height: 10px;
+        border-radius: 5px;
+        background: linear-gradient(90deg, rgba(255, 225, 77, 0), #ffe14d);
+      }
+      #logo .l {
+        display: inline-block;
+      }
+      #cta {
+        display: inline-block;
+        margin-top: 40px;
+        padding: 26px 46px;
+        border-radius: 999px;
+        background: var(--pink);
+        color: #fff;
+        font-size: 50px;
+        box-shadow: 0 0 60px rgba(255, 62, 165, 0.75);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="30"
+      data-width="1080"
+      data-height="1920"
+    >
+      <!-- ============ FOOTAGE (shots from the room's own trailer) ============ -->
+      <div class="cam" id="c1" style="z-index: 1">
+        <video id="v1" class="clip" data-start="0" data-duration="3.2" data-media-start="0.5" data-track-index="0" src="assets/reel.mp4" muted playsinline></video>
+      </div>
+      <div class="cam" id="c2" style="z-index: 2">
+        <video id="v2" class="clip" data-start="3.2" data-duration="2.5" data-media-start="4.2" data-track-index="0" src="assets/reel.mp4" muted playsinline></video>
+      </div>
+      <div class="cam" id="c3" style="z-index: 3">
+        <video id="v3" class="clip" data-start="5.7" data-duration="2.7" data-media-start="13.0" data-track-index="0" src="assets/reel.mp4" muted playsinline></video>
+      </div>
+      <div class="cam" id="c4" style="z-index: 4">
+        <video id="v4" class="clip" data-start="8.4" data-duration="2.4" data-media-start="16.6" data-track-index="0" src="assets/reel.mp4" muted playsinline></video>
+      </div>
+      <div class="cam" id="c5" style="z-index: 5">
+        <video id="v5" class="clip" data-start="10.8" data-duration="2.4" data-media-start="23.0" data-track-index="0" src="assets/reel.mp4" muted playsinline></video>
+      </div>
+      <div class="cam" id="c6" style="z-index: 6">
+        <video id="v6" class="clip" data-start="13.2" data-duration="1.5" data-media-start="46.3" data-track-index="0" src="assets/reel.mp4" muted playsinline></video>
+      </div>
+      <div class="cam" id="c6b" style="z-index: 7">
+        <video id="v6b" class="clip" data-start="14.7" data-duration="1.8" data-media-start="52.0" data-track-index="0" src="assets/reel.mp4" muted playsinline></video>
+      </div>
+      <div class="cam" id="c7" style="z-index: 8">
+        <video id="v7" class="clip" data-start="16.5" data-duration="4.0" data-media-start="29.3" data-track-index="0" src="assets/reel.mp4" muted playsinline></video>
+      </div>
+      <div class="cam" id="c8" style="z-index: 9">
+        <video id="v8" class="clip" data-start="20.5" data-duration="2.2" data-media-start="61.0" data-track-index="0" src="assets/reel.mp4" muted playsinline></video>
+      </div>
+      <div class="cam" id="c9" style="z-index: 10">
+        <video id="v9" class="clip" data-start="22.7" data-duration="2.2" data-media-start="8.0" data-track-index="0" src="assets/reel.mp4" muted playsinline></video>
+      </div>
+      <div class="cam" id="c10" style="z-index: 11">
+        <video id="v10" class="clip" data-start="24.9" data-duration="5.1" data-media-start="0.2" data-track-index="0" src="assets/reel.mp4" muted playsinline></video>
+      </div>
+
+      <!-- ============ LOOK LAYERS ============ -->
+      <div id="tint" class="layer clip" data-start="24.9" data-duration="5.1" data-track-index="1" data-layout-ignore style="z-index: 20; background: linear-gradient(180deg, rgba(7,2,15,0.2), rgba(40,6,60,0.75))"></div>
+      <div id="scan" class="layer" data-layout-ignore style="z-index: 40"></div>
+      <div id="vig" class="layer" data-layout-ignore style="z-index: 41"></div>
+
+      <!-- ============ HUD ============ -->
+      <div id="hud-play" class="hud" style="left: 70px; top: 200px; z-index: 50">▶ PLAY</div>
+      <div id="hud-rec" class="hud" style="left: 70px; top: 256px; z-index: 50; color: #ff4d4d; font-size: 32px">● REC</div>
+      <div id="hud-date" class="hud" style="left: 70px; top: 1250px; z-index: 50; font-size: 34px">SP  OCT.31 1998</div>
+
+      <!-- ============ COPY ============ -->
+      <div id="t1" class="clip layer" data-start="0" data-duration="3.15" data-track-index="2" style="z-index: 60">
+        <div class="center big" style="top: 640px; font-size: 190px"><span class="w" id="t1a">IT'S</span><br /><span class="w" id="t1b" style="color: var(--yellow)">1998.</span></div>
+        <div class="center sub" style="top: 1040px"><span class="w t1s">your</span> <span class="w t1s">room</span> <span class="w t1s">is</span> <span class="w t1s">still</span> <span class="w t1s">here.</span></div>
+      </div>
+
+      <div id="t2" class="clip layer" data-start="3.3" data-duration="1.7" data-track-index="2" style="z-index: 60">
+        <div class="center mid" style="top: 820px"><span class="w t2w">TURN</span> <span class="w t2w">ON</span> <span class="w t2w">THE</span> <span class="w t2w" style="color: var(--teal)">TV.</span></div>
+      </div>
+
+      <div id="t3" class="clip layer" data-start="4.9" data-duration="1.1" data-track-index="2" style="z-index: 61" data-layout-allow-overflow>
+        <div id="t3in" class="center" style="top: 700px; font-size: 210px; line-height: 0.9; color: var(--yellow); text-shadow: -6px 0 0 rgba(255,62,165,.9), 6px 0 0 rgba(25,227,210,.9), 0 14px 50px rgba(0,0,0,.8)">
+          <div id="t3a">SHRINK</div>
+          <div id="t3b">DOWN.</div>
+        </div>
+      </div>
+
+      <div id="t4" class="clip layer" data-start="6.2" data-duration="2.1" data-track-index="2" style="z-index: 60">
+        <div class="center" style="top: 760px"><div id="t4s" class="sticker">ARMY MEN</div></div>
+        <div class="center sub" style="top: 940px"><span class="w t4w">a</span> <span class="w t4w">war</span> <span class="w t4w">on</span> <span class="w t4w">the</span> <span class="w t4w">rug.</span></div>
+      </div>
+
+      <div id="t5" class="clip layer" data-start="8.6" data-duration="2.1" data-track-index="2" style="z-index: 60">
+        <div class="center mid" style="top: 800px"><span class="w t5w">HOLD</span> <span class="w t5w">THE</span> <span class="w t5w" style="color: var(--pink)">LINE.</span></div>
+      </div>
+
+      <div id="t6" class="clip layer" data-start="10.9" data-duration="2.25" data-track-index="2" style="z-index: 60" data-layout-allow-overflow>
+        <div class="streak" id="sk1" style="top: 720px; left: 0; width: 520px"></div>
+        <div class="streak" id="sk2" style="top: 1110px; left: 0; width: 700px"></div>
+        <div class="streak" id="sk3" style="top: 1180px; left: 0; width: 380px"></div>
+        <div class="center" style="top: 780px"><div id="t6s" class="sticker pink">HOT WHEELS</div></div>
+        <div class="center mid" style="top: 950px; font-size: 92px"><span id="t6w">RACE THE BED.</span></div>
+      </div>
+
+      <div id="t7" class="clip layer" data-start="13.3" data-duration="3.15" data-track-index="2" style="z-index: 60">
+        <div class="center mid" style="top: 760px"><span class="w" id="t7a">I SPY…</span></div>
+        <div class="center mid" style="top: 900px"><span class="w t7w">A</span> <span class="w t7w">WHOLE</span> <span class="w t7w" style="color: var(--yellow)">WORLD.</span></div>
+      </div>
+
+      <div id="t8" class="clip layer" data-start="16.5" data-duration="3.95" data-track-index="2" style="z-index: 60" data-layout-allow-overlap data-layout-allow-overflow>
+        <div class="polaroid" id="p1" style="left: 40px; top: 230px"><img src="assets/monopoly.jpg" alt="" /><span>MONOPOLY</span></div>
+        <div class="polaroid" id="p2" style="left: 600px; top: 260px"><img src="assets/clue.jpg" alt="" /><span>CLUE</span></div>
+        <div class="polaroid" id="p3" style="left: 80px; top: 900px"><img src="assets/sorry.jpg" alt="" /><span>SORRY!</span></div>
+        <div class="polaroid" id="p4" style="left: 580px; top: 880px"><img src="assets/yahtzee.jpg" alt="" /><span>YAHTZEE</span></div>
+        <div id="t8box" class="center" style="top: 700px">
+          <div class="mid" style="font-size: 72px" id="t8a">PICK A GAME</div>
+          <div class="slot" style="margin-top: 10px">
+            <div class="slot-reel" id="reel">
+              <div>MONOPOLY</div>
+              <div>CLUE</div>
+              <div>SORRY!</div>
+              <div>CHESS</div>
+              <div>CONNECT 4</div>
+              <div>BATTLESHIP</div>
+              <div>ALL OF 'EM.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="t9" class="clip layer" data-start="20.6" data-duration="2.05" data-track-index="2" style="z-index: 60">
+        <div class="center" style="top: 380px"><div id="t9s" class="sticker teal">GAME BOY</div></div>
+        <div class="center sub" style="top: 560px"><span class="w t9w">tetris</span> <span class="w t9w">on</span> <span class="w t9w">the</span> <span class="w t9w">bean</span> <span class="w t9w">bag.</span></div>
+      </div>
+
+      <div id="t10" class="clip layer" data-start="22.8" data-duration="2.05" data-track-index="2" style="z-index: 60">
+        <div class="center mid" style="top: 960px"><span class="w t10w">THE</span> <span class="w t10w">FURBY'S</span> <span class="w t10w" style="color: var(--pink)">AWAKE.</span></div>
+      </div>
+
+      <div id="t11" class="clip layer" data-start="25.4" data-duration="4.6" data-track-index="2" style="z-index: 60">
+        <div class="center sub" style="top: 600px; color: var(--yellow)" id="t11k">STEP BACK INTO</div>
+        <div class="center big" id="logo" style="top: 680px; font-size: 168px">
+          <span class="l">B</span><span class="l">O</span><span class="l">A</span><span class="l">R</span><span class="l">E</span><span class="l">D</span><br /><span class="l">G</span><span class="l">A</span><span class="l">M</span><span class="l">E</span><span class="l">S</span>
+        </div>
+        <div class="center sub" style="top: 1030px; font-size: 48px" id="t11s">the 90s room</div>
+        <div class="center" style="top: 1090px"><div id="cta">PLAY IT IN YOUR BROWSER</div></div>
+        <div class="center sub" style="top: 1280px; font-size: 28px; opacity: 0.75" id="credit">music: "Brahe" by Punch Deck · CC BY 4.0</div>
+      </div>
+
+      <!-- transition layers -->
+      <div id="dip" class="layer" data-layout-ignore style="z-index: 90"></div>
+      <div id="flash" class="layer" data-layout-ignore style="z-index: 91"></div>
+
+      <audio id="music" class="clip" data-start="0" data-duration="30" data-media-start="9" data-volume="0.9" data-fade-out="1.5" data-track-index="5" src="assets/music.mp3"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // ---------- camera moves on the footage ----------
+      // s1: room, slow drift across the room
+      tl.fromTo("#c1", { x: 650, scale: 1.0 }, { x: -250, scale: 1.12, duration: 3.2, ease: "power1.inOut" }, 0);
+      // whip out of s1 / into s2
+      tl.fromTo("#c1", { x: -250, filter: "blur(0px)" }, { x: -900, filter: "blur(18px)", duration: 0.2, ease: "power3.in", immediateRender: false }, 3.0);
+      tl.fromTo("#c2", { x: 700, scale: 1.05, filter: "blur(18px)" }, { x: 120, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 3.2);
+      tl.fromTo("#c2", { scale: 1.05, x: 120 }, { scale: 1.45, x: 140, duration: 2.15, ease: "power2.in", immediateRender: false }, 3.55);
+      // s3: shrink-down arrival, the army map grows from far away
+      tl.fromTo("#c3", { scale: 2.8, x: -200, filter: "blur(14px)" }, { scale: 1.08, x: -150, filter: "blur(0px)", duration: 0.9, ease: "expo.out" }, 5.7);
+      tl.fromTo("#c3", { scale: 1.08, x: -150 }, { scale: 1.2, x: -260, duration: 1.8, ease: "none", immediateRender: false }, 6.6);
+      // s4: ground level, pan
+      tl.fromTo("#c4", { x: 350, scale: 1.15 }, { x: -350, scale: 1.25, duration: 2.4, ease: "power1.inOut" }, 8.4);
+      tl.fromTo("#c4", { x: -350, filter: "blur(0px)" }, { x: -1100, filter: "blur(18px)", duration: 0.2, ease: "power3.in", immediateRender: false }, 10.6);
+      // s5: hot wheels, whip in then push
+      tl.fromTo("#c5", { x: 900, scale: 1.1, filter: "blur(18px)" }, { x: 150, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 10.8);
+      tl.fromTo("#c5", { scale: 1.1, x: 150 }, { scale: 1.4, x: 120, duration: 2.05, ease: "power2.in", immediateRender: false }, 11.15);
+      // s6: rug world, iris reveal
+      tl.fromTo("#c6", { clipPath: "circle(0% at 50% 50%)", scale: 1.35 }, { clipPath: "circle(80% at 50% 50%)", scale: 1.1, duration: 0.45, ease: "power3.out" }, 13.2);
+      tl.fromTo("#c6", { scale: 1.1 }, { scale: 1.25, duration: 1.05, ease: "none", immediateRender: false }, 13.65);
+      tl.fromTo("#c6b", { scale: 1.45, x: 0 }, { scale: 1.15, x: -150, duration: 1.8, ease: "expo.out" }, 14.7);
+      // s7: game shelf, pan across the boxes
+      tl.fromTo("#c7", { x: 950, scale: 1.25 }, { x: 150, scale: 1.1, duration: 4.0, ease: "power2.inOut" }, 16.5);
+      // s7 -> s8 vertical whip
+      tl.fromTo("#c7", { y: 0, filter: "blur(0px)" }, { y: -1400, filter: "blur(20px)", duration: 0.22, ease: "power3.in", immediateRender: false }, 20.3);
+      tl.fromTo("#c8", { y: 1400, scale: 1.1, filter: "blur(20px)" }, { y: 0, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, 20.5);
+      tl.fromTo("#c8", { scale: 1.1 }, { scale: 1.5, duration: 1.8, ease: "power2.in", immediateRender: false }, 20.9);
+      // s9: bed + furby
+      tl.fromTo("#c9", { x: 250, scale: 1.3 }, { x: -350, scale: 1.4, duration: 2.2, ease: "power1.inOut" }, 22.7);
+      // s10: pull way back out of the room
+      tl.fromTo("#c10", { scale: 1.9, x: -100, filter: "blur(12px)" }, { scale: 1.0, x: 0, filter: "blur(0px)", duration: 1.6, ease: "expo.out" }, 24.9);
+      tl.fromTo("#c10", { scale: 1.0 }, { scale: 1.06, duration: 3.5, ease: "none", immediateRender: false }, 26.5);
+
+      // ---------- transition layers ----------
+      // flash at the shrink-down arrival
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.95, duration: 0.08, ease: "none" }, 5.62);
+      tl.fromTo("#flash", { opacity: 0.95 }, { opacity: 0, duration: 0.35, ease: "power2.out", immediateRender: false }, 5.7);
+      // dip cut s3 -> s4
+      tl.fromTo("#dip", { opacity: 0 }, { opacity: 0.6, duration: 0.1, ease: "none" }, 8.3);
+      tl.fromTo("#dip", { opacity: 0.6 }, { opacity: 0, duration: 0.15, ease: "power2.out", immediateRender: false }, 8.4);
+      // flash into the board games
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.85, duration: 0.06, ease: "none" }, 16.44);
+      tl.fromTo("#flash", { opacity: 0.85 }, { opacity: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, 16.5);
+      // dip cut s8 -> s9
+      tl.fromTo("#dip", { opacity: 0 }, { opacity: 0.6, duration: 0.1, ease: "none" }, 22.6);
+      tl.fromTo("#dip", { opacity: 0.6 }, { opacity: 0, duration: 0.15, ease: "power2.out", immediateRender: false }, 22.7);
+      // flash into the finale
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.9, duration: 0.06, ease: "none" }, 24.84);
+      tl.fromTo("#flash", { opacity: 0.9 }, { opacity: 0, duration: 0.45, ease: "power2.out", immediateRender: false }, 24.9);
+      // tint up for the end card
+      tl.fromTo("#tint", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power2.inOut" }, 25.2);
+
+      // ---------- HUD ----------
+      tl.fromTo("#hud-rec", { opacity: 1 }, { opacity: 0.15, duration: 0.5, ease: "steps(1)", repeat: 29, yoyo: true }, 0);
+
+      tl.fromTo("#hud-date", { opacity: 1 }, { opacity: 0, duration: 0.2, ease: "none", immediateRender: false }, 25.2);
+
+      // ---------- copy ----------
+      // T1: on screen at frame 0 (thumbnail), slams into place
+      tl.fromTo("#t1a", { scale: 1.25, opacity: 1 }, { scale: 1, duration: 0.3, ease: "expo.out" }, 0);
+      tl.fromTo("#t1b", { scale: 1.18, opacity: 1, rotation: -4 }, { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2)" }, 0.12);
+      tl.fromTo(".t1s", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.09, ease: "power2.out" }, 0.7);
+      tl.fromTo("#t1 .center", { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(10px)", duration: 0.18, ease: "power2.in", immediateRender: false }, 2.9);
+
+      // T2
+      tl.fromTo(".t2w", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.25, stagger: 0.08, ease: "expo.out" }, 3.3);
+      tl.fromTo(".t2w", { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in", immediateRender: false }, 4.8);
+
+      // T3: SHRINK DOWN, then zoom through the letters into the rug
+      tl.fromTo("#t3a", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.2)" }, 4.9);
+      tl.fromTo("#t3b", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.2)" }, 5.05);
+      tl.fromTo("#t3in", { scale: 1 }, { scale: 14, duration: 0.42, ease: "power3.in", immediateRender: false }, 5.3);
+      tl.fromTo("#t3in", { opacity: 1 }, { opacity: 0, duration: 0.1, ease: "none", immediateRender: false }, 5.62);
+
+      // T4
+      tl.fromTo("#t4s", { opacity: 0, scale: 2.2, rotation: 12 }, { opacity: 1, scale: 1, rotation: -4, duration: 0.35, ease: "back.out(2)" }, 6.2);
+      tl.fromTo(".t4w", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.08, ease: "power2.out" }, 6.55);
+      tl.fromTo("#t4 .center", { opacity: 1, y: 0 }, { opacity: 0, y: -30, duration: 0.15, ease: "power2.in", immediateRender: false }, 8.1);
+
+      // T5
+      tl.fromTo(".t5w", { opacity: 0, scale: 1.8 }, { opacity: 1, scale: 1, duration: 0.22, stagger: 0.14, ease: "expo.out" }, 8.6);
+      tl.fromTo(".t5w", { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in", immediateRender: false }, 10.5);
+
+      // T6: speed streaks + sticker
+      tl.fromTo("#sk1", { x: -600 }, { x: 1300, duration: 0.5, ease: "power2.in" }, 10.95);
+      tl.fromTo("#sk2", { x: -800 }, { x: 1300, duration: 0.6, ease: "power2.in" }, 11.05);
+      tl.fromTo("#sk3", { x: -500 }, { x: 1300, duration: 0.45, ease: "power2.in" }, 11.2);
+      tl.fromTo("#t6s", { opacity: 0, x: -700, skewX: -25 }, { opacity: 1, x: 0, skewX: -6, duration: 0.4, ease: "expo.out" }, 11.0);
+      tl.fromTo("#t6w", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 11.35);
+      tl.fromTo("#t6 .center", { opacity: 1, x: 0 }, { opacity: 0, x: 700, duration: 0.2, ease: "power3.in", immediateRender: false }, 12.95);
+
+      // T7
+      tl.fromTo("#t7a", { opacity: 0, scaleX: 1.6 }, { opacity: 1, scaleX: 1, duration: 0.5, ease: "expo.out" }, 13.45);
+      tl.fromTo(".t7w", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.1, ease: "back.out(2)" }, 14.75);
+      tl.fromTo("#t7 .center", { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(10px)", duration: 0.18, ease: "power2.in", immediateRender: false }, 16.25);
+
+      // T8: box photos rain in, slot machine rolls the game names
+      tl.fromTo("#p1", { opacity: 0, y: -900, rotation: -40 }, { opacity: 1, y: 0, rotation: -8, duration: 0.5, ease: "back.out(1.6)" }, 16.6);
+      tl.fromTo("#p2", { opacity: 0, y: -900, rotation: 40 }, { opacity: 1, y: 0, rotation: 7, duration: 0.5, ease: "back.out(1.6)" }, 16.75);
+      tl.fromTo("#p3", { opacity: 0, y: 900, rotation: 30 }, { opacity: 1, y: 0, rotation: 6, duration: 0.5, ease: "back.out(1.6)" }, 16.9);
+      tl.fromTo("#p4", { opacity: 0, y: 900, rotation: -30 }, { opacity: 1, y: 0, rotation: -9, duration: 0.5, ease: "back.out(1.6)" }, 17.05);
+      tl.fromTo("#t8a", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 17.0);
+      tl.fromTo("#reel", { y: 0 }, { y: -720, duration: 2.0, ease: "power3.inOut" }, 17.4);
+      tl.fromTo("#t8box", { scale: 1 }, { scale: 1.12, duration: 0.25, ease: "back.out(3)" }, 19.4);
+      tl.fromTo(["#p1", "#p2", "#p3", "#p4"], { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.6, duration: 0.2, stagger: 0.03, ease: "power2.in", immediateRender: false }, 20.1);
+      tl.fromTo("#t8box", { opacity: 1 }, { opacity: 0, duration: 0.15, ease: "power2.in", immediateRender: false }, 20.25);
+
+      // T9
+      tl.fromTo("#t9s", { opacity: 0, y: 300, rotation: -10 }, { opacity: 1, y: 0, rotation: 3, duration: 0.4, ease: "back.out(1.8)" }, 20.7);
+      tl.fromTo(".t9w", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.08, ease: "power2.out" }, 21.05);
+      tl.fromTo("#t9 .center", { opacity: 1 }, { opacity: 0, duration: 0.15, ease: "power2.in", immediateRender: false }, 22.5);
+
+      // T10
+      tl.fromTo(".t10w", { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.25, stagger: 0.12, ease: "expo.out" }, 22.9);
+      tl.fromTo(".t10w", { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in", immediateRender: false }, 24.65);
+
+      // T11: end card
+      tl.fromTo("#t11k", { opacity: 0, scaleX: 1.5 }, { opacity: 1, scaleX: 1, duration: 0.5, ease: "expo.out" }, 25.4);
+      tl.fromTo("#logo .l", { opacity: 0, y: 120 }, { opacity: 1, y: 0, duration: 0.45, stagger: 0.05, ease: "back.out(2.4)" }, 25.6);
+      tl.fromTo("#t11s", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }, 26.4);
+      tl.fromTo("#cta", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2.2)" }, 26.8);
+      tl.fromTo("#credit", { opacity: 0 }, { opacity: 0.75, duration: 0.3, ease: "none" }, 27.2);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

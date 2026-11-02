@@ -1,0 +1,323 @@
+{
+  "id": "chess",
+  "gsap": "../work/gsap.min.js",
+  "reel": "../work/reel.mp4",
+  "music": {
+    "src": "$BOARED/public/room/brahe-punch-deck.mp3",
+    "start": 120,
+    "volume": 0.9,
+    "fadeIn": 0.4,
+    "credit": "music: \"Brahe\" by Punch Deck · CC BY 4.0"
+  },
+  "accent": "#ffd34d",
+  "hud": "SP  WIZARD CHESS",
+  "tintAt": 47.5,
+  "shots": [
+    {
+      "kind": "still",
+      "src": "../stills/chess4/09.jpg",
+      "d": 4.5,
+      "x0": -600,
+      "x1": -750,
+      "s0": 1.2,
+      "s1": 1.35,
+      "tr": "none"
+    },
+    {
+      "kind": "reel",
+      "ms": 29.3,
+      "d": 3.0,
+      "x0": 950,
+      "x1": 450,
+      "s0": 1.25,
+      "s1": 1.15,
+      "tr": "whip"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/chess4/00.jpg",
+      "d": 3.5,
+      "x0": 0,
+      "x1": 0,
+      "s0": 1.0,
+      "s1": 1.2,
+      "tr": "zoom",
+      "ease": "power2.in"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/chess3/01.jpg",
+      "d": 3.0,
+      "x0": 150,
+      "x1": -150,
+      "y0": 470,
+      "y1": 540,
+      "s0": 1.5,
+      "s1": 1.6,
+      "tr": "whip"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/chess2/01.jpg",
+      "d": 3.0,
+      "x0": 0,
+      "x1": 0,
+      "y0": 200,
+      "y1": 150,
+      "s0": 1.3,
+      "s1": 1.45,
+      "tr": "punch"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/chess4/01.jpg",
+      "d": 3.0,
+      "x0": 400,
+      "x1": 0,
+      "s0": 1.1,
+      "s1": 1.25,
+      "tr": "flash"
+    },
+    {
+      "kind": "still",
+      "layout": "card",
+      "src": "../stills/chess4/02-ui.jpg",
+      "bg": "../stills/chess4/bg/02-ui.jpg",
+      "cardTop": 640,
+      "d": 3.0,
+      "s0": 1.0,
+      "s1": 1.08,
+      "tr": "iris"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/chess4/04.jpg",
+      "d": 3.5,
+      "x0": 500,
+      "x1": -200,
+      "s0": 1.1,
+      "s1": 1.2,
+      "tr": "whip"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/chess4/06.jpg",
+      "d": 3.0,
+      "x0": 0,
+      "x1": 0,
+      "s0": 1.4,
+      "s1": 1.15,
+      "tr": "dip",
+      "ease": "power2.out"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/chess2/03.jpg",
+      "d": 3.0,
+      "x0": -320,
+      "x1": -360,
+      "y0": 850,
+      "y1": 900,
+      "s0": 2.0,
+      "s1": 2.2,
+      "tr": "zoom"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/chess4/09.jpg",
+      "d": 3.0,
+      "x0": -700,
+      "x1": -800,
+      "s0": 1.5,
+      "s1": 1.6,
+      "tr": "flash"
+    },
+    {
+      "kind": "still",
+      "layout": "card",
+      "src": "../stills/chess4/08-ui.jpg",
+      "bg": "../stills/chess4/bg/08-ui.jpg",
+      "cardTop": 640,
+      "d": 3.5,
+      "s0": 1.0,
+      "s1": 1.08,
+      "tr": "vwhip"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/chess4/07.jpg",
+      "d": 4.5,
+      "x0": 600,
+      "x1": -400,
+      "s0": 1.05,
+      "s1": 1.15,
+      "tr": "dip"
+    },
+    {
+      "kind": "reel",
+      "ms": 1.5,
+      "d": 4.5,
+      "x0": 650,
+      "x1": -250,
+      "s0": 1.0,
+      "s1": 1.1,
+      "tr": "dip"
+    },
+    { "kind": "reel", "ms": 0.4, "d": 7.5, "x0": 0, "x1": 0, "s0": 1.15, "s1": 1.05, "tr": "zoom" }
+  ],
+  "texts": [
+    {
+      "kind": "big",
+      "at": 0,
+      "d": 4.4,
+      "y": 330,
+      "text": ["CHECKMATE", "IN *4 MOVES.*"],
+      "enter": "hook",
+      "size": 132
+    },
+    {
+      "kind": "sub",
+      "at": 2.0,
+      "d": 2.4,
+      "y": 1120,
+      "text": ["watch."],
+      "enter": "blur",
+      "size": 52
+    },
+    {
+      "kind": "sub",
+      "at": 4.8,
+      "d": 2.6,
+      "y": 1060,
+      "text": ["wizard chess,", "off the top shelf."],
+      "enter": "blur",
+      "size": 52
+    },
+    {
+      "kind": "mid",
+      "at": 7.8,
+      "d": 3.1,
+      "y": 330,
+      "text": ["THE BOARD", "*GLOWS.*"],
+      "enter": "rise",
+      "size": 110
+    },
+    {
+      "kind": "mid",
+      "at": 11.2,
+      "d": 2.7,
+      "y": 1000,
+      "text": ["PIECES", "*TALLER* THAN YOU."],
+      "enter": "slam",
+      "size": 96
+    },
+    {
+      "kind": "slot",
+      "at": 14.1,
+      "d": 2.8,
+      "y": 330,
+      "label": "MOVE 1",
+      "items": ["A3", "H4", "NF3", "D4", "E4"],
+      "spin": 1.5
+    },
+    {
+      "kind": "slot",
+      "at": 17.1,
+      "d": 2.8,
+      "y": 330,
+      "label": "MOVE 2",
+      "items": ["NC3", "BB5", "QE2", "BC4"],
+      "spin": 1.5
+    },
+    {
+      "kind": "mid",
+      "at": 20.2,
+      "d": 2.7,
+      "y": 330,
+      "text": ["THE GHOST", "*THINKS...*"],
+      "enter": "blur",
+      "size": 100
+    },
+    {
+      "kind": "slot",
+      "at": 23.1,
+      "d": 3.2,
+      "y": 330,
+      "label": "MOVE 3",
+      "items": ["NF3", "D3", "O-O", "QH5"],
+      "spin": 1.6
+    },
+    {
+      "kind": "mid",
+      "at": 26.7,
+      "d": 2.7,
+      "y": 330,
+      "text": ["IT DOESN'T", "*SEE IT.*"],
+      "enter": "drop",
+      "size": 110
+    },
+    {
+      "kind": "big",
+      "at": 29.6,
+      "d": 2.8,
+      "y": 330,
+      "text": ["QUEEN", "TAKES *F7.*"],
+      "enter": "slam",
+      "size": 140
+    },
+    {
+      "kind": "big",
+      "at": 32.6,
+      "d": 2.8,
+      "y": 330,
+      "text": ["*CHECK-*", "*MATE.*"],
+      "enter": "slam",
+      "size": 190
+    },
+    {
+      "kind": "big",
+      "at": 35.7,
+      "d": 3.2,
+      "y": 300,
+      "text": ["DID YOUR DAD", "EVER *LET*", "*YOU WIN?*"],
+      "enter": "pop",
+      "size": 112
+    },
+    {
+      "kind": "sub",
+      "at": 36.6,
+      "d": 2.3,
+      "y": 1190,
+      "text": ["be honest ↓"],
+      "enter": "blur",
+      "size": 46
+    },
+    {
+      "kind": "mid",
+      "at": 39.2,
+      "d": 4.2,
+      "y": 330,
+      "text": ["A *WIZARD* BOARD", "ON THE CARD TABLE", "IN YOUR ROOM."],
+      "enter": "rise",
+      "size": 84
+    },
+    {
+      "kind": "mid",
+      "at": 43.7,
+      "d": 4.2,
+      "y": 330,
+      "text": ["THE ROOM YOU", "*GREW UP* IN."],
+      "enter": "blur",
+      "size": 96
+    },
+    {
+      "kind": "endcard",
+      "at": 48.4,
+      "d": 7.1,
+      "y": 680,
+      "kicker": "WIZARD CHESS AND MORE IN",
+      "sub": "the 90s room",
+      "cta": "PLAY IT IN YOUR BROWSER"
+    }
+  ]
+}
