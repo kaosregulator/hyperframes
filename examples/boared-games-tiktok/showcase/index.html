@@ -353,83 +353,83 @@
       // s1: room, slow drift across the room
       tl.fromTo("#c1", { x: 650, scale: 1.0 }, { x: -250, scale: 1.12, duration: 3.2, ease: "power1.inOut" }, 0);
       // whip out of s1 / into s2
-      tl.to("#c1", { x: -900, filter: "blur(18px)", duration: 0.2, ease: "power3.in" }, 3.0);
+      tl.fromTo("#c1", { x: -250, filter: "blur(0px)" }, { x: -900, filter: "blur(18px)", duration: 0.2, ease: "power3.in", immediateRender: false }, 3.0);
       tl.fromTo("#c2", { x: 700, scale: 1.05, filter: "blur(18px)" }, { x: 120, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 3.2);
-      tl.to("#c2", { scale: 1.45, x: 140, duration: 2.15, ease: "power2.in" }, 3.55);
+      tl.fromTo("#c2", { scale: 1.05, x: 120 }, { scale: 1.45, x: 140, duration: 2.15, ease: "power2.in", immediateRender: false }, 3.55);
       // s3: shrink-down arrival, the army map grows from far away
       tl.fromTo("#c3", { scale: 2.8, x: -200, filter: "blur(14px)" }, { scale: 1.08, x: -150, filter: "blur(0px)", duration: 0.9, ease: "expo.out" }, 5.7);
-      tl.to("#c3", { scale: 1.2, x: -260, duration: 1.8, ease: "none" }, 6.6);
+      tl.fromTo("#c3", { scale: 1.08, x: -150 }, { scale: 1.2, x: -260, duration: 1.8, ease: "none", immediateRender: false }, 6.6);
       // s4: ground level, pan
       tl.fromTo("#c4", { x: 350, scale: 1.15 }, { x: -350, scale: 1.25, duration: 2.4, ease: "power1.inOut" }, 8.4);
-      tl.to("#c4", { x: -1100, filter: "blur(18px)", duration: 0.2, ease: "power3.in" }, 10.6);
+      tl.fromTo("#c4", { x: -350, filter: "blur(0px)" }, { x: -1100, filter: "blur(18px)", duration: 0.2, ease: "power3.in", immediateRender: false }, 10.6);
       // s5: hot wheels, whip in then push
       tl.fromTo("#c5", { x: 900, scale: 1.1, filter: "blur(18px)" }, { x: 150, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 10.8);
-      tl.to("#c5", { scale: 1.4, x: 120, duration: 2.05, ease: "power2.in" }, 11.15);
+      tl.fromTo("#c5", { scale: 1.1, x: 150 }, { scale: 1.4, x: 120, duration: 2.05, ease: "power2.in", immediateRender: false }, 11.15);
       // s6: rug world, iris reveal
       tl.fromTo("#c6", { clipPath: "circle(0% at 50% 50%)", scale: 1.35 }, { clipPath: "circle(80% at 50% 50%)", scale: 1.1, duration: 0.45, ease: "power3.out" }, 13.2);
-      tl.to("#c6", { scale: 1.25, duration: 1.05, ease: "none" }, 13.65);
+      tl.fromTo("#c6", { scale: 1.1 }, { scale: 1.25, duration: 1.05, ease: "none", immediateRender: false }, 13.65);
       tl.fromTo("#c6b", { scale: 1.45, x: 0 }, { scale: 1.15, x: -150, duration: 1.8, ease: "expo.out" }, 14.7);
       // s7: game shelf, pan across the boxes
       tl.fromTo("#c7", { x: 950, scale: 1.25 }, { x: 150, scale: 1.1, duration: 4.0, ease: "power2.inOut" }, 16.5);
       // s7 -> s8 vertical whip
-      tl.to("#c7", { y: -1400, filter: "blur(20px)", duration: 0.22, ease: "power3.in" }, 20.3);
+      tl.fromTo("#c7", { y: 0, filter: "blur(0px)" }, { y: -1400, filter: "blur(20px)", duration: 0.22, ease: "power3.in", immediateRender: false }, 20.3);
       tl.fromTo("#c8", { y: 1400, scale: 1.1, filter: "blur(20px)" }, { y: 0, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, 20.5);
-      tl.to("#c8", { scale: 1.5, duration: 1.8, ease: "power2.in" }, 20.9);
+      tl.fromTo("#c8", { scale: 1.1 }, { scale: 1.5, duration: 1.8, ease: "power2.in", immediateRender: false }, 20.9);
       // s9: bed + furby
       tl.fromTo("#c9", { x: 250, scale: 1.3 }, { x: -350, scale: 1.4, duration: 2.2, ease: "power1.inOut" }, 22.7);
       // s10: pull way back out of the room
       tl.fromTo("#c10", { scale: 1.9, x: -100, filter: "blur(12px)" }, { scale: 1.0, x: 0, filter: "blur(0px)", duration: 1.6, ease: "expo.out" }, 24.9);
-      tl.to("#c10", { scale: 1.06, duration: 3.5, ease: "none" }, 26.5);
+      tl.fromTo("#c10", { scale: 1.0 }, { scale: 1.06, duration: 3.5, ease: "none", immediateRender: false }, 26.5);
 
       // ---------- transition layers ----------
       // flash at the shrink-down arrival
       tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.95, duration: 0.08, ease: "none" }, 5.62);
-      tl.to("#flash", { opacity: 0, duration: 0.35, ease: "power2.out" }, 5.7);
+      tl.fromTo("#flash", { opacity: 0.95 }, { opacity: 0, duration: 0.35, ease: "power2.out", immediateRender: false }, 5.7);
       // dip cut s3 -> s4
       tl.fromTo("#dip", { opacity: 0 }, { opacity: 0.6, duration: 0.1, ease: "none" }, 8.3);
-      tl.to("#dip", { opacity: 0, duration: 0.15, ease: "power2.out" }, 8.4);
+      tl.fromTo("#dip", { opacity: 0.6 }, { opacity: 0, duration: 0.15, ease: "power2.out", immediateRender: false }, 8.4);
       // flash into the board games
       tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.85, duration: 0.06, ease: "none" }, 16.44);
-      tl.to("#flash", { opacity: 0, duration: 0.3, ease: "power2.out" }, 16.5);
+      tl.fromTo("#flash", { opacity: 0.85 }, { opacity: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, 16.5);
       // dip cut s8 -> s9
       tl.fromTo("#dip", { opacity: 0 }, { opacity: 0.6, duration: 0.1, ease: "none" }, 22.6);
-      tl.to("#dip", { opacity: 0, duration: 0.15, ease: "power2.out" }, 22.7);
+      tl.fromTo("#dip", { opacity: 0.6 }, { opacity: 0, duration: 0.15, ease: "power2.out", immediateRender: false }, 22.7);
       // flash into the finale
       tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.9, duration: 0.06, ease: "none" }, 24.84);
-      tl.to("#flash", { opacity: 0, duration: 0.45, ease: "power2.out" }, 24.9);
+      tl.fromTo("#flash", { opacity: 0.9 }, { opacity: 0, duration: 0.45, ease: "power2.out", immediateRender: false }, 24.9);
       // tint up for the end card
       tl.fromTo("#tint", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power2.inOut" }, 25.2);
 
       // ---------- HUD ----------
       tl.fromTo("#hud-rec", { opacity: 1 }, { opacity: 0.15, duration: 0.5, ease: "steps(1)", repeat: 29, yoyo: true }, 0);
 
-      tl.to("#hud-date", { opacity: 0, duration: 0.2, ease: "none" }, 25.2);
+      tl.fromTo("#hud-date", { opacity: 1 }, { opacity: 0, duration: 0.2, ease: "none", immediateRender: false }, 25.2);
 
       // ---------- copy ----------
       // T1: on screen at frame 0 (thumbnail), slams into place
       tl.fromTo("#t1a", { scale: 1.25, opacity: 1 }, { scale: 1, duration: 0.3, ease: "expo.out" }, 0);
       tl.fromTo("#t1b", { scale: 1.18, opacity: 1, rotation: -4 }, { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2)" }, 0.12);
       tl.fromTo(".t1s", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.09, ease: "power2.out" }, 0.7);
-      tl.to("#t1 .center", { opacity: 0, filter: "blur(10px)", duration: 0.18, ease: "power2.in" }, 2.9);
+      tl.fromTo("#t1 .center", { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(10px)", duration: 0.18, ease: "power2.in", immediateRender: false }, 2.9);
 
       // T2
       tl.fromTo(".t2w", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.25, stagger: 0.08, ease: "expo.out" }, 3.3);
-      tl.to(".t2w", { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 4.8);
+      tl.fromTo(".t2w", { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in", immediateRender: false }, 4.8);
 
       // T3: SHRINK DOWN, then zoom through the letters into the rug
       tl.fromTo("#t3a", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.2)" }, 4.9);
       tl.fromTo("#t3b", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.2)" }, 5.05);
-      tl.to("#t3in", { scale: 14, duration: 0.42, ease: "power3.in" }, 5.3);
-      tl.to("#t3in", { opacity: 0, duration: 0.1, ease: "none" }, 5.62);
+      tl.fromTo("#t3in", { scale: 1 }, { scale: 14, duration: 0.42, ease: "power3.in", immediateRender: false }, 5.3);
+      tl.fromTo("#t3in", { opacity: 1 }, { opacity: 0, duration: 0.1, ease: "none", immediateRender: false }, 5.62);
 
       // T4
       tl.fromTo("#t4s", { opacity: 0, scale: 2.2, rotation: 12 }, { opacity: 1, scale: 1, rotation: -4, duration: 0.35, ease: "back.out(2)" }, 6.2);
       tl.fromTo(".t4w", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.08, ease: "power2.out" }, 6.55);
-      tl.to("#t4 .center", { opacity: 0, y: -30, duration: 0.15, ease: "power2.in" }, 8.1);
+      tl.fromTo("#t4 .center", { opacity: 1, y: 0 }, { opacity: 0, y: -30, duration: 0.15, ease: "power2.in", immediateRender: false }, 8.1);
 
       // T5
       tl.fromTo(".t5w", { opacity: 0, scale: 1.8 }, { opacity: 1, scale: 1, duration: 0.22, stagger: 0.14, ease: "expo.out" }, 8.6);
-      tl.to(".t5w", { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 10.5);
+      tl.fromTo(".t5w", { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in", immediateRender: false }, 10.5);
 
       // T6: speed streaks + sticker
       tl.fromTo("#sk1", { x: -600 }, { x: 1300, duration: 0.5, ease: "power2.in" }, 10.95);
@@ -437,12 +437,12 @@
       tl.fromTo("#sk3", { x: -500 }, { x: 1300, duration: 0.45, ease: "power2.in" }, 11.2);
       tl.fromTo("#t6s", { opacity: 0, x: -700, skewX: -25 }, { opacity: 1, x: 0, skewX: -6, duration: 0.4, ease: "expo.out" }, 11.0);
       tl.fromTo("#t6w", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 11.35);
-      tl.to("#t6 .center", { opacity: 0, x: 700, duration: 0.2, ease: "power3.in" }, 12.95);
+      tl.fromTo("#t6 .center", { opacity: 1, x: 0 }, { opacity: 0, x: 700, duration: 0.2, ease: "power3.in", immediateRender: false }, 12.95);
 
       // T7
       tl.fromTo("#t7a", { opacity: 0, scaleX: 1.6 }, { opacity: 1, scaleX: 1, duration: 0.5, ease: "expo.out" }, 13.45);
       tl.fromTo(".t7w", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.1, ease: "back.out(2)" }, 14.75);
-      tl.to("#t7 .center", { opacity: 0, filter: "blur(10px)", duration: 0.18, ease: "power2.in" }, 16.25);
+      tl.fromTo("#t7 .center", { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(10px)", duration: 0.18, ease: "power2.in", immediateRender: false }, 16.25);
 
       // T8: box photos rain in, slot machine rolls the game names
       tl.fromTo("#p1", { opacity: 0, y: -900, rotation: -40 }, { opacity: 1, y: 0, rotation: -8, duration: 0.5, ease: "back.out(1.6)" }, 16.6);
@@ -452,17 +452,17 @@
       tl.fromTo("#t8a", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 17.0);
       tl.fromTo("#reel", { y: 0 }, { y: -720, duration: 2.0, ease: "power3.inOut" }, 17.4);
       tl.fromTo("#t8box", { scale: 1 }, { scale: 1.12, duration: 0.25, ease: "back.out(3)" }, 19.4);
-      tl.to(["#p1", "#p2", "#p3", "#p4"], { opacity: 0, scale: 0.6, duration: 0.2, stagger: 0.03, ease: "power2.in" }, 20.1);
-      tl.to("#t8box", { opacity: 0, duration: 0.15, ease: "power2.in" }, 20.25);
+      tl.fromTo(["#p1", "#p2", "#p3", "#p4"], { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.6, duration: 0.2, stagger: 0.03, ease: "power2.in", immediateRender: false }, 20.1);
+      tl.fromTo("#t8box", { opacity: 1 }, { opacity: 0, duration: 0.15, ease: "power2.in", immediateRender: false }, 20.25);
 
       // T9
       tl.fromTo("#t9s", { opacity: 0, y: 300, rotation: -10 }, { opacity: 1, y: 0, rotation: 3, duration: 0.4, ease: "back.out(1.8)" }, 20.7);
       tl.fromTo(".t9w", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.08, ease: "power2.out" }, 21.05);
-      tl.to("#t9 .center", { opacity: 0, duration: 0.15, ease: "power2.in" }, 22.5);
+      tl.fromTo("#t9 .center", { opacity: 1 }, { opacity: 0, duration: 0.15, ease: "power2.in", immediateRender: false }, 22.5);
 
       // T10
       tl.fromTo(".t10w", { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.25, stagger: 0.12, ease: "expo.out" }, 22.9);
-      tl.to(".t10w", { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 24.65);
+      tl.fromTo(".t10w", { opacity: 1, filter: "blur(0px)" }, { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in", immediateRender: false }, 24.65);
 
       // T11: end card
       tl.fromTo("#t11k", { opacity: 0, scaleX: 1.5 }, { opacity: 1, scaleX: 1, duration: 0.5, ease: "expo.out" }, 25.4);
