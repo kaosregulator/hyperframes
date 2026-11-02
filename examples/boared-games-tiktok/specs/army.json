@@ -1,0 +1,332 @@
+{
+  "id": "army-men",
+  "gsap": "../work/gsap.min.js",
+  "reel": "../work/reel.mp4",
+  "music": {
+    "src": "$BOARED/public/room/brahe-punch-deck.mp3",
+    "start": 180,
+    "volume": 0.9,
+    "fadeIn": 0.3,
+    "credit": "music: \"Brahe\" by Punch Deck · CC BY 4.0"
+  },
+  "accent": "#9dff5a",
+  "hud": "SP  ARMY TOWN",
+  "tintAt": 47.5,
+  "shots": [
+    {
+      "kind": "still",
+      "src": "../stills/army/09.jpg",
+      "d": 4.5,
+      "x0": 300,
+      "x1": -100,
+      "s0": 1.1,
+      "s1": 1.25,
+      "tr": "none"
+    },
+    {
+      "kind": "reel",
+      "ms": 1.5,
+      "d": 2.5,
+      "x0": 650,
+      "x1": 200,
+      "s0": 1.0,
+      "s1": 1.08,
+      "tr": "whip"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/army/00.jpg",
+      "d": 3.0,
+      "x0": 200,
+      "x1": 150,
+      "y0": -150,
+      "y1": -200,
+      "s0": 1.1,
+      "s1": 1.35,
+      "tr": "dip",
+      "ease": "power2.in"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/army/01.jpg",
+      "d": 2.5,
+      "x0": 0,
+      "x1": 0,
+      "y0": -120,
+      "y1": -200,
+      "s0": 1.3,
+      "s1": 1.9,
+      "tr": "punch",
+      "ease": "power3.in"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/army/02-ui.jpg",
+      "d": 3.0,
+      "x0": 200,
+      "x1": -150,
+      "s0": 1.15,
+      "s1": 1.25,
+      "tr": "zoom"
+    },
+    {
+      "kind": "reel",
+      "ms": 13.2,
+      "d": 3.0,
+      "x0": -150,
+      "x1": -260,
+      "s0": 1.08,
+      "s1": 1.2,
+      "tr": "whip"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/army/03.jpg",
+      "d": 3.0,
+      "x0": 700,
+      "x1": 400,
+      "s0": 1.15,
+      "s1": 1.25,
+      "tr": "flash"
+    },
+    {
+      "kind": "still",
+      "layout": "card",
+      "src": "../stills/army/05-ui.jpg",
+      "bg": "../stills/army/bg/05-ui.jpg",
+      "cardTop": 640,
+      "d": 3.0,
+      "s0": 1.0,
+      "s1": 1.08,
+      "tr": "iris"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/army/06.jpg",
+      "d": 3.0,
+      "x0": 300,
+      "x1": -100,
+      "s0": 1.1,
+      "s1": 1.25,
+      "tr": "whip"
+    },
+    {
+      "kind": "still",
+      "layout": "card",
+      "src": "../stills/army/08-ui.jpg",
+      "bg": "../stills/army/bg/08-ui.jpg",
+      "cardTop": 640,
+      "d": 3.0,
+      "s0": 1.0,
+      "s1": 1.08,
+      "tr": "punch"
+    },
+    {
+      "kind": "reel",
+      "ms": 16.6,
+      "d": 3.5,
+      "x0": 350,
+      "x1": -350,
+      "s0": 1.15,
+      "s1": 1.25,
+      "tr": "vwhip"
+    },
+    {
+      "kind": "still",
+      "src": "../stills/army/10.jpg",
+      "d": 3.0,
+      "x0": -300,
+      "x1": -500,
+      "s0": 1.2,
+      "s1": 1.3,
+      "tr": "zoom"
+    },
+    {
+      "kind": "still",
+      "layout": "card",
+      "src": "../stills/army/11-ui.jpg",
+      "bg": "../stills/army/bg/11-ui.jpg",
+      "cardTop": 640,
+      "d": 3.0,
+      "s0": 1.0,
+      "s1": 1.08,
+      "tr": "dip"
+    },
+    {
+      "kind": "reel",
+      "ms": 19.0,
+      "d": 4.0,
+      "x0": 300,
+      "x1": -300,
+      "s0": 1.15,
+      "s1": 1.3,
+      "tr": "flash"
+    },
+    {
+      "kind": "reel",
+      "ms": 1.5,
+      "d": 4.5,
+      "x0": 650,
+      "x1": -250,
+      "s0": 1.0,
+      "s1": 1.1,
+      "tr": "dip"
+    },
+    { "kind": "reel", "ms": 0.4, "d": 7.5, "x0": 0, "x1": 0, "s0": 1.15, "s1": 1.05, "tr": "zoom" }
+  ],
+  "texts": [
+    {
+      "kind": "big",
+      "at": 0,
+      "d": 4.4,
+      "y": 330,
+      "text": ["YOU'RE", "*2 INCHES*", "TALL."],
+      "enter": "hook",
+      "size": 150
+    },
+    {
+      "kind": "mid",
+      "at": 4.7,
+      "d": 2.2,
+      "y": 330,
+      "text": ["YOUR BEDROOM", "FLOOR..."],
+      "enter": "rise",
+      "size": 96
+    },
+    {
+      "kind": "mid",
+      "at": 7.2,
+      "d": 2.7,
+      "y": 330,
+      "text": ["...IS A", "*WAR ZONE.*"],
+      "enter": "slam",
+      "size": 120
+    },
+    {
+      "kind": "big",
+      "at": 10.1,
+      "d": 2.3,
+      "y": 330,
+      "text": ["*SHRINK*", "*DOWN.*"],
+      "enter": "pop",
+      "size": 180
+    },
+    {
+      "kind": "sticker",
+      "at": 12.7,
+      "d": 2.7,
+      "y": 380,
+      "text": "ARMY TOWN",
+      "rot": -4,
+      "sub": "on the rug."
+    },
+    {
+      "kind": "mid",
+      "at": 15.7,
+      "d": 2.7,
+      "y": 330,
+      "text": ["TANKS. BLOCKS.", "A *HELIPAD.*"],
+      "enter": "drop",
+      "size": 96
+    },
+    {
+      "kind": "mid",
+      "at": 18.7,
+      "d": 2.7,
+      "y": 330,
+      "text": ["SGT. GREEN", "*NEEDS YOU.*"],
+      "enter": "rise",
+      "size": 104
+    },
+    {
+      "kind": "mid",
+      "at": 21.7,
+      "d": 2.7,
+      "y": 330,
+      "text": ["DO NOT FREAK", "OUT, *SOLDIER!*"],
+      "enter": "blur",
+      "size": 88
+    },
+    {
+      "kind": "big",
+      "at": 24.7,
+      "d": 2.7,
+      "y": 330,
+      "text": ["*SOUND*", "*OFF!*"],
+      "enter": "slam",
+      "size": 170
+    },
+    {
+      "kind": "sticker",
+      "at": 27.7,
+      "d": 2.7,
+      "y": 380,
+      "text": "ROLL CALL!",
+      "color": "pink",
+      "rot": 3
+    },
+    {
+      "kind": "big",
+      "at": 30.7,
+      "d": 3.2,
+      "y": 330,
+      "text": ["HOLD THE", "*LINE.*"],
+      "enter": "pop",
+      "size": 150
+    },
+    {
+      "kind": "counter",
+      "at": 34.1,
+      "d": 2.8,
+      "y": 330,
+      "label": "TAN SOLDIERS INCOMING",
+      "prefix": "",
+      "to": "16"
+    },
+    {
+      "kind": "mid",
+      "at": 37.2,
+      "d": 2.7,
+      "y": 330,
+      "text": ["GOOD", "*LUCK.*"],
+      "enter": "blur",
+      "size": 120
+    },
+    {
+      "kind": "big",
+      "at": 40.2,
+      "d": 3.7,
+      "y": 300,
+      "text": ["WHO *MELTED*", "THEIR ARMY", "MEN?"],
+      "enter": "pop",
+      "size": 120
+    },
+    {
+      "kind": "sub",
+      "at": 41.2,
+      "d": 2.7,
+      "y": 1160,
+      "text": ["magnifying glass gang ↓"],
+      "enter": "blur",
+      "size": 44
+    },
+    {
+      "kind": "mid",
+      "at": 44.2,
+      "d": 4.2,
+      "y": 330,
+      "text": ["THE ROOM YOU", "*GREW UP* IN."],
+      "enter": "blur",
+      "size": 96
+    },
+    {
+      "kind": "endcard",
+      "at": 48.9,
+      "d": 7.1,
+      "y": 680,
+      "kicker": "ARMY MEN AND MORE IN",
+      "sub": "the 90s room",
+      "cta": "PLAY IT IN YOUR BROWSER"
+    }
+  ]
+}
